@@ -1,11 +1,12 @@
 const { Router } = require('express');
 const router = Router();
 
+const testDb = require('../db/test.json');
+const moviesDb = require('../db/movies.json');
+
 //route for root api
 router.get('/', (req, res) =>{
-  let testData = require('../db/test.json');
-  let moviesData = require('../db/movies.json');
-  res.json( [testData, moviesData]);
+  res.json( [testDb, moviesDb]);
 
   /*
   let htmlData = `

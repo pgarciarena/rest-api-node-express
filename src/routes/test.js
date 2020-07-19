@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const router = Router();
 
-//route for test 
+const testDb = require('../db/test.json');
+const test = testDb.test;
+
 router.get('/test', (req, res) =>{
-  let testData = require('../db/test.json');
-  res.json(testData);
+  res.json(test);
 });
 
 module.exports = router;
