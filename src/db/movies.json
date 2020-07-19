@@ -5,14 +5,14 @@
       "title": "Aliens",
       "director": "James Cameron",
       "year": 1986,
-      "raiting": "8.5"
+      "rating": "8.5"
     },
     {
       "id": 2,
       "title": "The Dark Knight",
       "director": "James Cameron",
       "year": 2006,
-      "raiting": "10"
+      "rating": "10"
     }
   ]
 }
