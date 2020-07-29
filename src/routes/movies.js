@@ -4,11 +4,14 @@ const _ = require('underscore');
 const moviesDb = require('../db/movies.json');
 const movies = moviesDb.movies;
 
+// GET router ( /api/movies )
 router.get('/movies', (req, res) =>{
   //respondo al navegador con un json
   res.json(movies);
 });
 
+
+// POST router ( /api/movies ) --> ADD
 router.post('/movies', (req, res) =>{
   const {title, director, year, rating} = req.body;
 
@@ -22,13 +25,16 @@ router.post('/movies', (req, res) =>{
   }
 });
 
+
+// PUT router ( /api/movies/:id ) --> UPDATE
 router.put('/movies/:id', (req, res) => {
-  const {id} = req.params;
-  const {title, director, year, rating} = req.body;
+  const {id} = req.params; //obtengo el id de los parametros de mi url, en este caso :id
+  const {title, director, year, rating} = req.body; //obtengo los datos que vienen en mi body
 
   if( title && director && year && rating ){
     _.each(movies, (movie, i) => {
-      if(movie.id == id){
+        console.log('movie index: ', i);
+      if(movie.id === id){
         movie.title = title;
         movie.director = director;
         movie.year = year;
@@ -41,10 +47,12 @@ router.put('/movies/:id', (req, res) => {
   }
 });
 
+
+// DELETE router ( /api/movies/:id ) --> REMOVE
 router.delete('/movies/:id', (req, res) => {
   const {id} = req.params;
   _.each(movies, (movie, i) => {
-    if(movie.id == id){
+    if(movie.id === id){
       movies.splice(i,1);
     }
   });
