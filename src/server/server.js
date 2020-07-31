@@ -1,9 +1,8 @@
-const express = require ('express');
-const morgan = require ('morgan');
+const express = require('express');
+const morgan = require('morgan');
 
 //manejaremos nuestra app con expresss
 const app = express();
-
 
 /* ---------------------------------------------------------- */
 /* SETTINGS */
@@ -19,30 +18,30 @@ app.set('json spaces', 2);
 
 //con morgan podemos ver mensajes en consola
 //hay diferentes formatos de mensajes, nosotros usaremos 'dev'
-app.use( morgan('dev') );
+app.use(morgan('dev'));
 
 //permitir a nuestro servidor que reciba y entienda datos enviados desde formularios de la manera simple (no extendida)
-app.use( express.urlencoded({extended: false}) );
+app.use(express.urlencoded({extended: false}));
 
 //permitir a nuestro servidor que reciba datos en formato json
-app.use( express.json() );
+app.use(express.json());
 
 
 /* ---------------------------------------------------------- */
 /* ROUTES */
 
-app.use(require('../routes/home') );
+app.use(require('../routes/home'));
 
 //las siguientes rutas deben empezar con /api/
-app.use('/api/', require('../routes/root') ); // sería: /api
-app.use('/api/', require('../routes/test') ); // sería: /api/test
-app.use('/api/', require('../routes/movies') ); //sería: /api/movies
+app.use('/api/', require('../routes/root')); // sería: /api
+app.use('/api/', require('../routes/test')); // sería: /api/test
+app.use('/api/', require('../routes/movies')); //sería: /api/movies
 
 
 /* ---------------------------------------------------------- */
 /* STARTING THE SERVER */
-app.listen( app.get('port'), () =>{
-  console.log(`Server on port ${app.get('port')}`);
+app.listen(app.get('port'), () => {
+    console.log(`Server on port ${app.get('port')}`);
 });
 
 module.exports = app;
